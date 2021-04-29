@@ -10,11 +10,11 @@ export class Stack {
   }
 
   isEmpty(): boolean {
-    return this.top < 0;
+    return this.top === -1;
   }
 
   isFull(): boolean {
-    return this.top >= this.arrSize;
+    return this.top === this.arrSize;
   }
 
   push(data: number): number {

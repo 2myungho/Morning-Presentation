@@ -1,28 +1,32 @@
 import { Queue } from "./Queue";
 
-test("Should storage must be empty When object is created.", () => {
+test("Should storage must be empty When queue object is created.", () => {
   //given
 
   //when
   const q = new Queue(3);
   const isEmpty = q.isEmpty();
+  const rear = q.rear;
 
   //then
+  expect(rear).toBe(-1);
   expect(isEmpty).toBeTruthy();
 });
 
-test("Should be a non-empty repository, When you put the data in", () => {
+test("Should be a non-empty storage, When put data in queue storage", () => {
   //given
   const q = new Queue(3);
   q.enqueue(1);
 
   //when
   const isEmpty = q.isEmpty();
+  const rear = q.rear;
   //then
+  expect(rear).toBe(0);
   expect(isEmpty).toBeFalsy();
 });
 
-test("Should detect that repository is full, When the repository is full.", () => {
+test("Should detect that storage is full, When queue storage is full.", () => {
   //given
   const q = new Queue(3);
   q.enqueue(1);
@@ -32,13 +36,14 @@ test("Should detect that repository is full, When the repository is full.", () =
   //when
   const data = q.dequeue();
   const rear = q.rear;
+  const queueSize = q.arrSize;
 
   //then
+  expect(rear).toBe(queueSize);
   expect(data).toBeTruthy();
-  expect(rear).toBe(2);
 });
 
-test("Should return the data you put in, When push the data", () => {
+test("Should return the data you put in, When push data to the queue storage.", () => {
   //given
 
   //when
@@ -49,7 +54,7 @@ test("Should return the data you put in, When push the data", () => {
   expect(data).toBe(1);
 });
 
-test("Should occur error When number of data exceeds storage size.", () => {
+test("Should occur error When number of data exceeds queue storage size.", () => {
   //given
 
   //when
@@ -64,7 +69,7 @@ test("Should occur error When number of data exceeds storage size.", () => {
   }).toThrow(Error);
 });
 
-test("Should be returned data at the top, When data is ejected", () => {
+test("Should be returned data at the top,When data is ejected from queue store", () => {
   //given
   const q = new Queue(3);
   q.enqueue(1);
@@ -78,7 +83,7 @@ test("Should be returned data at the top, When data is ejected", () => {
   expect(data).toBe(1);
 });
 
-test("Should error occur When data is pulled from an empty store.", () => {
+test("Should error occur When data is pulled from an empty queue storage.", () => {
   //given
   const q = new Queue(3);
   q.enqueue(1);

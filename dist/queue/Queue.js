@@ -12,7 +12,7 @@ var Queue = /** @class */ (function () {
         return this.front == this.rear;
     };
     Queue.prototype.isFull = function () {
-        return this.rear >= this.arrSize;
+        return this.rear === this.arrSize;
     };
     Queue.prototype.enqueue = function (data) {
         if (this.isFull()) {

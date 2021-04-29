@@ -11,7 +11,7 @@ var Stack = /** @class */ (function () {
         return this.top === -1;
     };
     Stack.prototype.isFull = function () {
-        return this.top >= this.arrSize;
+        return this.top === this.arrSize;
     };
     Stack.prototype.push = function (data) {
         if (this.isFull()) {

@@ -16,7 +16,7 @@ export class Queue {
   }
 
   isFull(): boolean {
-    return this.rear >= this.arrSize;
+    return this.rear === this.arrSize;
   }
 
   enqueue(data: number): number {
