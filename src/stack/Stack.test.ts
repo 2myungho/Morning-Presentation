@@ -1,0 +1,102 @@
+import { Stack } from "./Stack";
+
+test("Should storage must be empty When object is created.", () => {
+  //given
+
+  //when
+  const st = new Stack(3);
+  const isEmpty = st.isEmpty();
+  const top = st.top;
+
+  //then
+  expect(isEmpty).toBeTruthy();
+  expect(top).toBe(-1);
+});
+
+test("Should be a non-empty repository, When you put the data in", () => {
+  //given
+  const st = new Stack(3);
+  st.push(1);
+
+  //when
+  const isEmpty = st.isEmpty();
+  const top = st.top;
+
+  //then
+  expect(isEmpty).toBeFalsy();
+  expect(top).toBe(0);
+});
+
+test("Should detect that repository is full, When the repository is full.", () => {
+  //given
+  const st = new Stack(3);
+  st.push(1);
+  st.push(2);
+  st.push(3);
+
+  //when
+  const isFull = st.isFull();
+  const top = st.top;
+
+  //then;
+  expect(isFull).toBeTruthy();
+  expect(top).toBe(2);
+});
+
+test("Should return the data you put in, When push the data", () => {
+  //given
+
+  //when
+  const st = new Stack(3);
+  const data = st.push(1);
+
+  //then
+  expect(data).toBe(1);
+});
+
+test("Should occur error When number of data exceeds storage size.", () => {
+  //given
+
+  //when
+  const st = new Stack(3);
+  st.push(1);
+  st.push(2);
+  st.push(3);
+
+  //then
+  expect(() => {
+    st.push(4);
+  }).toThrow(Error);
+});
+
+test("Should be returned data at the top, When data is ejected", () => {
+  //given
+  const st = new Stack(3);
+  st.push(1);
+  st.push(2);
+  st.push(3);
+
+  //when
+  const data = st.pop();
+
+  //then
+  expect(data).toBe(3);
+});
+
+test("Should error occur When data is pulled from an empty store.", () => {
+  //given
+  const st = new Stack(3);
+  st.push(1);
+  st.push(2);
+  st.push(3);
+
+  //when
+  st.pop();
+  st.pop();
+  st.pop();
+
+  //then
+  expect(() => {
+    st.pop();
+  }).toThrow(Error);
+});
