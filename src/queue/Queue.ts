@@ -16,7 +16,7 @@ export class Queue {
   }
 
   isFull(): boolean {
-    return this.rear >= this.arrSize;
+    return this.rear === this.arrSize;
   }
 
   enqueue(data: number): number {
@@ -39,6 +39,6 @@ const queue = new Queue(3);
 queue.enqueue(1);
 queue.enqueue(2);
 queue.enqueue(3);
-// console.log(queue.dequeue());
+console.log(queue.dequeue());
 // console.log(queue.dequeue());
 // console.log(queue.dequeue());
