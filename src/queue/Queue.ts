@@ -22,16 +22,14 @@ export class Queue {
   enqueue(data: number): number {
     if (this.isFull()) {
       throw new Error("큐가 가득 찼습니다.");
-    } else {
-      return (this.arr[++this.rear] = data);
     }
+    return (this.arr[++this.rear] = data);
   }
   dequeue(): number {
     if (this.isEmpty()) {
       throw new Error("큐가 비어 있습니다.");
-    } else {
-      return this.arr[++this.front];
     }
+    return this.arr[++this.front];
   }
 }
 
