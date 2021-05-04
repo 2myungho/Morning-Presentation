@@ -19,14 +19,14 @@ export class Stack {
 
   push(data: number): number {
     if (this.isFull()) {
-      throw new Error("스택이 가득 찼습니다.");
+      throw new StackFull("스택이 가득 찼습니다.");
     } else {
       return (this.arr[++this.top] = data);
     }
   }
   pop(): number {
     if (this.isEmpty()) {
-      throw new Error("스택이 비어 있습니다.");
+      throw new StackEmpty("스택이 비어 있습니다.");
     } else {
       return this.arr[this.top--];
     }
@@ -36,6 +36,20 @@ const stack = new Stack(3);
 stack.push(1);
 stack.push(2);
 stack.push(3);
-console.log(stack.pop());
 // console.log(stack.pop());
 // console.log(stack.pop());
+// console.log(stack.pop());
+
+export class StackEmpty extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "StackEmpty";
+  }
+}
+
+export class StackFull extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "StackFull";
+  }
+}
