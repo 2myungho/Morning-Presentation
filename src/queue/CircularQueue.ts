@@ -44,9 +44,9 @@ queue.enqueue(3);
 queue.enqueue(4);
 console.log(queue.dequeue());
 console.log(queue.dequeue());
-// queue.enqueue(4);
-// console.log(queue.dequeue());
-// console.log(queue.dequeue());
+queue.enqueue(4);
+console.log(queue.dequeue());
+console.log(queue.dequeue());
 
 export class QueueEmptyError extends Error {
   constructor(message = "큐가 비어 있습니다.") {
