@@ -35,7 +35,8 @@ var Queue = /** @class */ (function () {
             throw new QueueFullError("큐가 가득 찼습니다.");
         }
         this.currentSize = this.currentSize + 1;
-        return (this.arr[++this.rear] = data);
+        this.rear = this.rear + 1;
+        return (this.arr[this.rear] = data);
     };
     Queue.prototype.dequeue = function () {
         if (this.isEmpty()) {
